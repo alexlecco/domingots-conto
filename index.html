@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#11110f" />
+    <meta name="description" content="Domingots en Tinta Tacos: cenas, episodios y una noche digna de Westeros." />
+    <link rel="icon" href="assets/tinta-tacos-logo.png" type="image/png" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google Analytics placeholder: replace G-XXXXXXXXXX with the production measurement ID. -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+    </script>
+    -->
+    <title>Domingots | Tinta Tacos</title>
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Tinta Tacos, inicio">
+        <img src="assets/tinta-tacos-logo.png" alt="Tinta Tacos" />
+        <span>TINTA</span>
+      </a>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Cambiar a tema de Jon Snow y Ghost" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Cambiar tema</span>
+        </button>
+        <a class="nav-link" href="#encuesta" aria-label="Ir a la encuesta">Encuesta <span aria-hidden="true">↘</span></a>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Canción de Hielo y Fuego  te espera </p>
+          <h1 id="hero-title">DOMIN<span>G</span>OTS</h1>
+          <p class="hero-lede">Cena. Episodios. Westeros.</p>
+          <a class="button button-gold" href="#encuesta">Vota ahora <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-art" aria-label="Castle Ward, ubicación de Winterfell en Game of Thrones" role="img">
+          <div class="sun-ring"></div>
+          <div class="mountains mountains-back"></div>
+          <div class="mountains mountains-front"></div>
+          <div class="hero-stamp">TT</div>
+        </div>
+        <div class="hero-meta">
+          <span>01</span>
+          <span class="meta-rule"></span>
+          <span>Domingos · Tinta Tacos</span>
+        </div>
+      </section>
+
+      <section class="survey-section" id="encuesta" aria-labelledby="survey-title">
+        <div class="section-intro">
+          <h2 id="survey-title">Encuesta</h2>
+        </div>
+
+        <form id="survey-form" class="survey-form" novalidate>
+          <input class="trap-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input id="valar-comment-hidden" type="hidden" name="valarComment" />
+          <fieldset class="question-block">
+            <legend><span class="question-number">01</span> ¿Te gustaría ver episodios de <i>Game of Thrones</i> un domingo mientras cenas con nosotros?</legend>
+            <div class="choice-grid">
+              <label class="choice-card">
+                <input type="radio" name="attendance" value="yes" required />
+                <span class="choice-content"><strong>Sí, mi rey</strong><small>Quiero estar ahí</small></span>
+                <span class="choice-mark" aria-hidden="true">✓</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="attendance" value="no" required />
+                <span class="choice-content"><strong>No por ahora, bastardo</strong><small>No me interesa</small></span>
+                <span class="choice-mark" aria-hidden="true">×</span>
+              </label>
+              <label class="choice-card choice-valar">
+                <input type="radio" name="attendance" value="valar" required />
+                <span class="choice-content"><strong>Valar Morghulis</strong><small>Quiero dejar una recomendación</small></span>
+                <span class="choice-mark" aria-hidden="true">↗</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="form-divider"></div>
+
+          <div class="question-block">
+            <label class="question-label" for="house"><span class="question-number">02</span> ¿Qué casa lleva tu lealtad?</label>
+            <div class="select-wrap">
+              <select id="house" name="house" required>
+                <option value="" selected disabled>Elige tu casa</option>
+                <optgroup label="Las grandes casas">
+                  <option>Casa Stark</option>
+                  <option>Casa Targaryen</option>
+                  <option>Casa Lannister</option>
+                  <option>Casa Baratheon</option>
+                  <option>Casa Greyjoy</option>
+                  <option>Casa Martell</option>
+                  <option>Casa Tyrell</option>
+                  <option>Casa Arryn</option>
+                  <option>Casa Tully</option>
+                </optgroup>
+                <optgroup label="La Casa del Dragón">
+                  <option>Casa Velaryon</option>
+                  <option>Casa Hightower</option>
+                  <option>Casa Strong</option>
+                  <option>Casa Cole</option>
+                  <option>Casa Beesbury</option>
+                  <option>Casa Celtigar</option>
+                </optgroup>
+                <optgroup label="El caballero de los siete reinos">
+                  <option>Casa Fossoway</option>
+                  <option>Casa Dondarrion</option>
+                  <option>Casa Osgrey</option>
+                  <option>Casa Ashford</option>
+                  <option>Casa Tarth</option>
+                </optgroup>
+                <optgroup label="Otros estandartes">
+                  <option>Casa Mormont</option>
+                  <option>Casa Bolton</option>
+                  <option>Casa Frey</option>
+                  <option>Casa Karstark</option>
+                  <option>Casa Reed</option>
+                  <option>La Guardia de la Noche</option>
+                  <option>Los Caminantes Blancos</option>
+                </optgroup>
+              </select>
+              <span aria-hidden="true">⌄</span>
+            </div>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <div class="question-block">
+            <label class="question-label" for="preference"><span class="question-number">03</span> ¿Qué comida o trago debería entrar al menú?</label>
+            <div class="food-examples" aria-label="Ejemplos de comida temática">
+              <figure><img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=480&q=80" alt="Tacos servidos como ejemplo de comida temática" /><figcaption>Dragaris</figcaption></figure>
+              <figure><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=480&q=80" alt="Hamburguesa servida como ejemplo de comida temática" /><figcaption>Winterfell</figcaption></figure>
+              <figure><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=480&q=80" alt="Trago azul servido como ejemplo de bebida temática" /><figcaption>White Walker</figcaption></figure>
+            </div>
+            <input id="preference" name="preference" type="text" maxlength="160" required placeholder="Escribe tu propuesta..." />
+            <p class="hint">Ejemplos: Hamburguesa Dragaris (picante) · Nachos de Winterfell con carnita de lobo · El White Walker (trago azul)</p>
+          </div>
+
+          <button class="button button-dark" type="submit">Enviar al consejo <span aria-hidden="true">→</span></button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <dialog class="valar-modal" id="valar-modal" aria-labelledby="valar-title">
+        <form method="dialog" class="modal-card" id="valar-form">
+          <button class="modal-close" value="cancel" aria-label="Cerrar">×</button>
+          <p class="eyebrow"><span></span> Valar Morghulis</p>
+          <h2 id="valar-title">Deja tu<br /><em>recomendación.</em></h2>
+          <label for="valar-comment">Comentario</label>
+          <textarea id="valar-comment" name="valarComment" rows="5" maxlength="500" placeholder="Escribe aquí..." required></textarea>
+          <button class="button button-dark" type="submit" value="save">Enviar recomendación <span aria-hidden="true">→</span></button>
+        </form>
+      </dialog>
+
+      <section class="westeros-gallery" aria-labelledby="gallery-title">
+        <h2 id="gallery-title" class="visually-hidden">Universo de Westeros</h2>
+        <div class="gallery-grid">
+          <figure class="location-card franchise-got">
+            <a class="trailer-link" href="https://www.youtube.com/watch?v=kDIlADvnC_s" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler oficial en español latino de Game of Thrones">
+              <div class="location-image" role="img" aria-label="Daenerys Targaryen, Game of Thrones"></div>
+            </a>
+            <figcaption><strong>Game of Thrones</strong><a href="https://commons.wikimedia.org/wiki/File:Game_of_Thrones_(14568893324).jpg" target="_blank" rel="noreferrer">Imagen pública ↗</a></figcaption>
+          </figure>
+          <figure class="location-card franchise-hotd">
+            <a class="trailer-link" href="https://www.youtube.com/watch?v=5h6XfziHUAA" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler oficial en español latino de House of the Dragon">
+              <div class="location-image" role="img" aria-label="Logo de House of the Dragon"></div>
+            </a>
+            <figcaption><strong>House of the Dragon</strong><a href="https://commons.wikimedia.org/wiki/File:House_of_the_dragon_logo.png" target="_blank" rel="noreferrer">Imagen pública ↗</a></figcaption>
+          </figure>
+          <figure class="location-card franchise-knight">
+            <a class="trailer-link" href="https://www.youtube.com/watch?v=zdvE2GTqvkc" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler oficial en español latino de El Caballero de los Siete Reinos">
+              <div class="location-image" role="img" aria-label="Mural de A Knight of the Seven Kingdoms"></div>
+            </a>
+            <figcaption><strong>The Knight of the Seven Kingdoms</strong><a href="https://commons.wikimedia.org/wiki/File:A_Knight_of_the_Seven_Kingdoms_mural_(Sydney,_2026).jpg" target="_blank" rel="noreferrer">Imagen CC0 ↗</a></figcaption>
+          </figure>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>© Tinta Tacos</span>
+      <a href="#inicio">Volver arriba ↑</a>
+    </footer>
+    <script src="script.js" defer></script>
+  </body>
+</html>
