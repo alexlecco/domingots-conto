@@ -13,6 +13,14 @@
   --sans: 'DM Sans', Arial, sans-serif;
 }
 
+.question-block {
+  margin: 0 0 40px;
+}
+
+.question-label {
+  background-color:rgba(199, 151, 75, .28)
+}
+
 body[data-theme='ice'] {
   --ink: #101820;
   --ink-soft: #192530;
