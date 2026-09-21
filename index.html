@@ -63,7 +63,6 @@
 
         <form id="survey-form" class="survey-form" novalidate>
           <input class="trap-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-          <input id="valar-comment-hidden" type="hidden" name="valarComment" />
           <fieldset class="question-block">
             <legend><span class="question-number">01</span> ¿Te gustaría ver episodios de <i>Game of Thrones</i> un domingo mientras cenas con nosotros?</legend>
             <div class="choice-grid">
@@ -77,10 +76,10 @@
                 <span class="choice-content"><strong>No por ahora, bastardo</strong><small>No me interesa</small></span>
                 <span class="choice-mark" aria-hidden="true">×</span>
               </label>
-              <label class="choice-card choice-valar">
-                <input type="radio" name="attendance" value="valar" required />
-                <span class="choice-content"><strong>Valar Morghulis</strong><small>Quiero dejar una recomendación</small></span>
-                <span class="choice-mark" aria-hidden="true">↗</span>
+              <label class="choice-card">
+                <input type="radio" name="attendance" value="yes" required />
+                <span class="choice-content"><strong>Valar Morghulis</strong><small>te recomendaria algo guerrero</small></span>
+                <span class="choice-mark" aria-hidden="true">ℹ</span>
               </label>
             </div>
           </fieldset>
@@ -136,11 +135,6 @@
 
           <div class="question-block">
             <label class="question-label" for="preference"><span class="question-number">03</span> ¿Qué comida o trago debería entrar al menú?</label>
-            <div class="food-examples" aria-label="Ejemplos de comida temática">
-              <figure><img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=480&q=80" alt="Tacos servidos como ejemplo de comida temática" /><figcaption>Dragaris</figcaption></figure>
-              <figure><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=480&q=80" alt="Hamburguesa servida como ejemplo de comida temática" /><figcaption>Winterfell</figcaption></figure>
-              <figure><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=480&q=80" alt="Trago azul servido como ejemplo de bebida temática" /><figcaption>White Walker</figcaption></figure>
-            </div>
             <input id="preference" name="preference" type="text" maxlength="160" required placeholder="Escribe tu propuesta..." />
             <p class="hint">Ejemplos: Hamburguesa Dragaris (picante) · Nachos de Winterfell con carnita de lobo · El White Walker (trago azul)</p>
           </div>
@@ -150,36 +144,19 @@
         </form>
       </section>
 
-      <dialog class="valar-modal" id="valar-modal" aria-labelledby="valar-title">
-        <form method="dialog" class="modal-card" id="valar-form">
-          <button class="modal-close" value="cancel" aria-label="Cerrar">×</button>
-          <p class="eyebrow"><span></span> Valar Morghulis</p>
-          <h2 id="valar-title">Deja tu<br /><em>recomendación.</em></h2>
-          <label for="valar-comment">Comentario</label>
-          <textarea id="valar-comment" name="valarComment" rows="5" maxlength="500" placeholder="Escribe aquí..." required></textarea>
-          <button class="button button-dark" type="submit" value="save">Enviar recomendación <span aria-hidden="true">→</span></button>
-        </form>
-      </dialog>
-
       <section class="westeros-gallery" aria-labelledby="gallery-title">
         <h2 id="gallery-title" class="visually-hidden">Universo de Westeros</h2>
         <div class="gallery-grid">
           <figure class="location-card franchise-got">
-            <a class="trailer-link" href="https://www.youtube.com/watch?v=kDIlADvnC_s" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler oficial en español latino de Game of Thrones">
-              <div class="location-image" role="img" aria-label="Daenerys Targaryen, Game of Thrones"></div>
-            </a>
+            <div class="location-image" role="img" aria-label="Daenerys Targaryen, Game of Thrones"></div>
             <figcaption><strong>Game of Thrones</strong><a href="https://commons.wikimedia.org/wiki/File:Game_of_Thrones_(14568893324).jpg" target="_blank" rel="noreferrer">Imagen pública ↗</a></figcaption>
           </figure>
           <figure class="location-card franchise-hotd">
-            <a class="trailer-link" href="https://www.youtube.com/watch?v=5h6XfziHUAA" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler oficial en español latino de House of the Dragon">
-              <div class="location-image" role="img" aria-label="Logo de House of the Dragon"></div>
-            </a>
+            <div class="location-image" role="img" aria-label="Logo de House of the Dragon"></div>
             <figcaption><strong>House of the Dragon</strong><a href="https://commons.wikimedia.org/wiki/File:House_of_the_dragon_logo.png" target="_blank" rel="noreferrer">Imagen pública ↗</a></figcaption>
           </figure>
           <figure class="location-card franchise-knight">
-            <a class="trailer-link" href="https://www.youtube.com/watch?v=zdvE2GTqvkc" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler oficial en español latino de El Caballero de los Siete Reinos">
-              <div class="location-image" role="img" aria-label="Mural de A Knight of the Seven Kingdoms"></div>
-            </a>
+            <div class="location-image" role="img" aria-label="Mural de A Knight of the Seven Kingdoms"></div>
             <figcaption><strong>The Knight of the Seven Kingdoms</strong><a href="https://commons.wikimedia.org/wiki/File:A_Knight_of_the_Seven_Kingdoms_mural_(Sydney,_2026).jpg" target="_blank" rel="noreferrer">Imagen CC0 ↗</a></figcaption>
           </figure>
         </div>
