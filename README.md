@@ -2,6 +2,8 @@
 
 Static Netlify-ready landing page built with HTML, CSS and vanilla JavaScript.
 
+Optional background audio: place a legally licensed or authorized copy of the Game of Thrones theme at `assets/game-of-thrones-theme.mp3`. Browsers require user interaction before allowing autoplay; the first click or key press starts playback, and the speaker control toggles mute. If the MP3 is absent, the page falls back to a generated medieval ambient loop so the control remains functional.
+
 The visual gallery uses public location photography: Castle Ward/Winterfell (William Marnoch, CC BY 2.0), Dunluce Castle/Greyjoy and the Dubrovnik Game of Thrones set (Wikimedia Commons sources linked below each card). The images are loaded from their public source URLs.
 
 ## Deploy

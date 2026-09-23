@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#11110f" />
-    <meta name="description" content="Domingots en Tinta Tacos: cenas, episodios y una noche digna de Westeros." />
-    <link rel="icon" href="assets/tinta-tacos-logo.png" type="image/png" />
+    <meta name="description" content="Domingot en Pinta Tacos: cenas, episodios y una noche digna de Westeros." />
+    <link rel="icon" href="assets/pinta-tacos-logo.png" type="image/png" />
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="stylesheet" href="styles.css" />
     <!-- Google Analytics placeholder: replace G-XXXXXXXXXX with the production measurement ID. -->
@@ -18,40 +18,47 @@
       gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
     </script>
     -->
-    <title>Domingots | Tinta Tacos</title>
+    <title>Domingots | Pinta Tacos</title>
   </head>
   <body>
     <div class="noise" aria-hidden="true"></div>
     <header class="site-header">
-      <a class="brand" href="#inicio" aria-label="Tinta Tacos, inicio">
-        <img src="assets/tinta-tacos-logo.png" alt="Tinta Tacos" />
-        <span>TINTA</span>
+      <a class="brand" href="#inicio" aria-label="Pinta Tacos, inicio">
+        <img src="assets/pinta-tacos-logo.png" alt="Pinta Tacos" />
       </a>
       <div class="header-actions">
-        <button class="theme-toggle" type="button" aria-label="Cambiar a tema de Jon Snow y Ghost" aria-pressed="false">
-          <span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Cambiar tema</span>
-        </button>
-        <a class="nav-link" href="#encuesta" aria-label="Ir a la encuesta">Encuesta <span aria-hidden="true">↘</span></a>
+        <div>
+          <button class="theme-toggle" type="button" aria-label="Cambiar a tema de Jon Snow y Ghost" aria-pressed="false">
+            <span id="theme-text">#WinterIsComing❄️</span>
+          </button>
+        </div>
+        <div class="nav-cluster">
+          <a class="nav-link" href="#encuesta" aria-label="Ir a la encuesta">#ENCUESTA🗳️</a>
+        </div>
+        <div class="nav-cluster" style="width: 25px;">
+          <button class="audio-toggle" id="audio-toggle" type="button" aria-label="Silenciar música" aria-pressed="false">
+            <span id="audio-icon" aria-hidden="true">🔊</span>
+          </button>
+        </div>
       </div>
     </header>
+
+    <audio id="bg-music" loop preload="metadata" src="assets/game-of-thrones-theme.mp3"></audio>
 
     <main id="inicio">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow"><span></span> Canción de Hielo y Fuego  te espera </p>
           <h1 id="hero-title">DOMIN<span>GOT</span></h1>
-          <p class="hero-lede">Cena. Episodios. Westeros.</p>
-          <a class="button button-gold" href="#encuesta">Vota ahora <span aria-hidden="true">→</span></a>
+          <p class="hero-lede">Domingos · en Pinta Tacos</p>
+          <p class="hero-invite">Te invitamos a revivir los mejores momentos de tu serie favorita, en compañía de tus amigos, pareja o nuevos caballeros y princesas de Westeros. Te esperamos.</p>
+          <a class="button button-gold" href="#encuesta"> ¿te sumas? <span aria-hidden="true">→</span></a>
         </div>
         <div class="hero-art" aria-label="Castle Ward, ubicación de Winterfell en Game of Thrones" role="img">
-          <div class="sun-ring"></div>
-          <div class="mountains mountains-back"></div>
-          <div class="mountains mountains-front"></div>
-          <div class="hero-stamp">TT</div>
         </div>
         <div class="hero-meta">
           <span class="meta-rule"></span>
-          <span>Domingos · en Pinta Tacos</span>
+          <span>Cena. Episodios. Dragones. Amigos.</span>
         </div>
       </section>
 
@@ -76,11 +83,11 @@
                 <span class="choice-content"><strong>No por ahora, bastardo</strong><small>No me interesa</small></span>
                 <span class="choice-mark" aria-hidden="true">×</span>
               </label>
-              <label class="choice-card">
+              <!-- <label class="choice-card">
                 <input type="radio" name="attendance" value="yes" required />
                 <span class="choice-content"><strong>Valar Morghulis</strong><small>te recomendaria algo guerrero</small></span>
                 <span class="choice-mark" aria-hidden="true">ℹ</span>
-              </label>
+              </label> -->
             </div>
           </fieldset>
           </div>
@@ -137,7 +144,13 @@
           <div class="question-block">
             <label class="question-label" for="preference"><span class="question-number">03</span> ¿Qué comida o trago debería entrar al menú?</label>
             <input id="preference" name="preference" type="text" maxlength="160" required placeholder="Escribe tu propuesta..." />
-            <p class="hint">Ejemplos: Hamburguesa Dragaris (picante) · Nachos de Winterfell con carnita de lobo · El White Walker (trago azul)</p>
+            <p class="hint">Ejemplos:</p>
+            <ul>
+              <li class="hint-list">Hamburguesa Dracaris (picante🔥)</li>
+              <li class="hint-list">Nachos de Winterfell (con carnita de lobo🐺)</li>
+              <li class="hint-list">El White Walker (trago helado 🍹)</li>
+              <li class="hint-list">El Dorniense (vino de Dorne 🍷)</li>
+            </ul>
           </div>
 
           <button class="button button-dark" type="submit">Enviar al consejo <span aria-hidden="true">→</span></button>
@@ -149,15 +162,21 @@
         <h2 id="gallery-title" >episodios de las 3 series del universo</h2>
         <div class="gallery-grid">
           <figure class="location-card franchise-got">
-            <div class="location-image" role="img" aria-label="Daenerys Targaryen, Game of Thrones"></div>
+            <a class="trailer-link" href="https://www.youtube.com/watch?v=Sii8v6OFkbo" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler de Juego de Tronos en YouTube">
+              <div class="location-image" role="img" aria-label="Juego de Tronos"></div>
+            </a>
             <figcaption><strong>Juego de Tronos</strong></figcaption>
           </figure>
           <figure class="location-card franchise-hotd">
-            <div class="location-image" role="img" aria-label="Logo de House of the Dragon"></div>
+            <a class="trailer-link" href="https://www.youtube.com/watch?v=5h6XfziHUAA" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler de La casa del dragón en YouTube">
+              <div class="location-image" role="img" aria-label="La casa del dragón"></div>
+            </a>
             <figcaption><strong>La casa del Dragon</strong></figcaption>
           </figure>
           <figure class="location-card franchise-knight">
-            <div class="location-image" role="img" aria-label="Mural de A Knight of the Seven Kingdoms"></div>
+            <a class="trailer-link" href="https://www.youtube.com/watch?v=zdvE2GTqvkc" target="_blank" rel="noopener noreferrer" aria-label="Ver tráiler de El caballero de los siete reinos en YouTube">
+              <div class="location-image" role="img" aria-label="El caballero de los siete reinos"></div>
+            </a>
             <figcaption><strong>El caballero de los 7 reinos</strong></figcaption>
           </figure>
         </div>

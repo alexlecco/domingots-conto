@@ -2,6 +2,14 @@ const form = document.querySelector('#survey-form');
 const status = document.querySelector('#form-status');
 const themeToggle = document.querySelector('.theme-toggle');
 const themeStorageKey = 'domingots-theme';
+const audio = document.querySelector('#bg-music');
+const audioToggle = document.querySelector('#audio-toggle');
+const audioIcon = document.querySelector('#audio-icon');
+let audioMode = 'file';
+let synthContext;
+let synthGain;
+let synthTimer;
+let synthStep = 0;
 const houseSelect = document.querySelector('#house');
 const surveySection = document.querySelector('.survey-section');
 const valarModal = document.querySelector('#valar-modal');
@@ -49,6 +57,7 @@ const renderHouse = (house) => {
 const setTheme = (theme) => {
   const isIce = theme === 'ice';
   document.body.dataset.theme = isIce ? 'ice' : 'fire';
+  document.querySelector('#theme-text').textContent = isIce ? '#Dracarys🔥' : '#WinterIsComing❄️ ';
   themeToggle?.setAttribute('aria-pressed', String(isIce));
   themeToggle?.setAttribute('aria-label', isIce ? 'Cambiar a tema de Daenerys y Drogon' : 'Cambiar a tema de Jon Snow y Ghost');
 };
@@ -59,6 +68,88 @@ themeToggle?.addEventListener('click', () => {
   localStorage.setItem(themeStorageKey, nextTheme);
   setTheme(nextTheme);
 });
+
+const updateAudioControl = (muted) => {
+  if (audioIcon) audioIcon.textContent = muted ? '🔇' : '🔊';
+  audioToggle?.setAttribute('aria-label', muted ? 'Activar música' : 'Silenciar música');
+  audioToggle?.setAttribute('aria-pressed', String(muted));
+};
+
+const startSynthMusic = () => {
+  if (synthContext) {
+    synthContext.resume();
+    return;
+  }
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) return;
+  synthContext = new AudioContextClass();
+  synthGain = synthContext.createGain();
+  synthGain.gain.value = 0.045;
+  synthGain.connect(synthContext.destination);
+
+  const padFrequencies = [110, 164.81, 220];
+  padFrequencies.forEach((frequency, index) => {
+    const oscillator = synthContext.createOscillator();
+    const gain = synthContext.createGain();
+    oscillator.type = index === 1 ? 'triangle' : 'sine';
+    oscillator.frequency.value = frequency;
+    gain.gain.value = index === 0 ? 0.4 : 0.18;
+    oscillator.connect(gain).connect(synthGain);
+    oscillator.start();
+  });
+
+  synthTimer = window.setInterval(() => {
+    const notes = [110, 123.47, 146.83, 164.81, 146.83, 123.47];
+    const note = synthContext.createOscillator();
+    const noteGain = synthContext.createGain();
+    note.type = 'sine';
+    note.frequency.value = notes[synthStep % notes.length];
+    noteGain.gain.setValueAtTime(0.0001, synthContext.currentTime);
+    noteGain.gain.exponentialRampToValueAtTime(0.075, synthContext.currentTime + 0.08);
+    noteGain.gain.exponentialRampToValueAtTime(0.0001, synthContext.currentTime + 2.2);
+    note.connect(noteGain).connect(synthGain);
+    note.start();
+    note.stop(synthContext.currentTime + 2.3);
+    synthStep += 1;
+  }, 1800);
+};
+
+const playBackgroundMusic = () => {
+  if (audioMode === 'synth') {
+    startSynthMusic();
+    return;
+  }
+  if (!audio) return;
+  audio.volume = 0.35;
+  audio.play().catch(() => {
+    audioMode = 'synth';
+    startSynthMusic();
+  });
+};
+
+audioToggle?.addEventListener('click', async () => {
+  if (audioMode === 'synth') {
+    if (!synthContext) startSynthMusic();
+    const muted = synthGain?.gain.value > 0;
+    if (synthGain) synthGain.gain.value = muted ? 0 : 0.045;
+    updateAudioControl(muted);
+    return;
+  }
+  if (!audio) return;
+  if (audio.paused) await audio.play().catch(() => {});
+  audio.muted = !audio.muted;
+  updateAudioControl(audio.muted);
+});
+
+const startBackgroundMusic = () => {
+  playBackgroundMusic();
+  window.removeEventListener('pointerdown', startBackgroundMusic);
+  window.removeEventListener('keydown', startBackgroundMusic);
+};
+
+window.addEventListener('pointerdown', startBackgroundMusic, { once: true });
+window.addEventListener('keydown', startBackgroundMusic, { once: true });
+audio?.addEventListener('error', () => { audioMode = 'synth'; });
 
 houseSelect?.addEventListener('change', () => renderHouse(houseSelect.value));
 
