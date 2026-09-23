@@ -10,11 +10,11 @@ const json = (statusCode, body) => ({
 });
 
 const saveToSupabase = async (submission) => {
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const supabaseUrl = process.env.SUPABASE_URL?.replace(/\/$/, '');
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY;
 
   if (!supabaseUrl || !serviceRoleKey) {
-    throw new Error('Missing Supabase environment variables');
+    throw new Error('SUPABASE_NOT_CONFIGURED');
   }
 
   const response = await fetch(`${supabaseUrl}/rest/v1/survey_responses`, {
@@ -36,7 +36,7 @@ const saveToSupabase = async (submission) => {
 
   if (!response.ok) {
     const details = await response.text();
-    throw new Error(`Supabase insert failed: ${details}`);
+    throw new Error(`SUPABASE_INSERT_FAILED:${response.status}:${details}`);
   }
 };
 
@@ -54,9 +54,7 @@ const forwardToWebhook = async (submission) => {
     body: JSON.stringify(submission),
   });
 
-  if (!response.ok) {
-    throw new Error('Dashboard webhook forwarding failed');
-  }
+  if (!response.ok) throw new Error(`WEBHOOK_FORWARD_FAILED:${response.status}`);
 };
 
 exports.handler = async (event) => {
@@ -98,7 +96,13 @@ exports.handler = async (event) => {
     };
 
     await saveToSupabase(submission);
-    await forwardToWebhook(submission);
+
+    // Webhook forwarding is optional. A webhook outage must not discard a saved answer.
+    try {
+      await forwardToWebhook(submission);
+    } catch (webhookError) {
+      console.error('Optional dashboard webhook failed:', webhookError);
+    }
 
     return json(200, { ok: true });
   } catch (error) {
@@ -106,6 +110,7 @@ exports.handler = async (event) => {
 
     return json(500, {
       error: 'Unable to process survey',
+      code: error instanceof Error ? error.message.split(':')[0] : 'UNKNOWN_ERROR',
     });
   }
 };

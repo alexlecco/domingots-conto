@@ -208,8 +208,11 @@ form?.addEventListener('submit', async (event) => {
     form.reset();
     status.textContent = 'Tu respuesta ha llegado al consejo. Nos vemos el domingo.';
     track('survey_submitted', { house: payload.house, attendance: payload.attendance });
-  } catch {
-    status.textContent = 'No pudimos enviar la respuesta. Inténtalo de nuevo en un momento.';
+  } catch (error) {
+    status.textContent = window.location.protocol === 'file:'
+      ? 'Abre el sitio con Netlify Dev o desde la URL publicada para enviar respuestas.'
+      : 'No pudimos enviar la respuesta. Revisa la configuración de Netlify y Supabase.';
+    console.error('Survey submission error:', error);
     track('survey_error');
   } finally {
     submitButton.disabled = false;
